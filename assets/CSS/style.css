@@ -1,10 +1,8 @@
 #addTrainFormContainer,
 #currentTrainScheduleContainer {
-    border: 3px;
+    border: 5px;
     border-color: darkblue;
     border-style: solid;
-    margin: auto;
-    width: 900px;
 }
 
 #addTrainContainerLabel,
@@ -13,9 +11,13 @@
     color: white;
 }
 
+.container {
+    width: 940px;
+}
+
 input {
     margin-right: 10px;
-    width: 894px;
+    width: 895px;
 }
 
 #pageHeader {
