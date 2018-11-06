@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+        <div id="pageHeader">
+            <h1>
+                All Aboard!
+            </h1>
+            <h4>
+                The train waits for no one
+            </h4>
+        </div>
+        <br>
+        <div id="currentTrainScheduleContainer">
+            <div id="currentTrainScheduleLabel">
+                Current Train Schedule
+            </div>
+            <div id="scheduleTable"></div>
+        </div>
+        <br>
+        <div id="addTrainFormContainer">
+            <div id="addTrainContainerLabel">Add Train</div>
+            <br>
+            <div id="trainNameInputContainer">
+                <div>
+                    <label for="trainNameInput">Train Name</label>
+                </div>
+                <div>
+                    <input id="trainNameInput" type="text">
+                </div>
+                <br>
+            </div>
+            <div id="destinationInputContainer">
+                <div>
+                    <label for="destinationInput">Destination</label>
+                </div>
+                <div>
+                    <input id="destinationInput" type="text">
+                </div>
+                <br>
+            </div>
+            <div id="firstTimeInputContainer">
+                <div>
+                        <label for="firstTimeInput">First Train Time (HH:mm - military time)</label>
+                </div>
+                <div>
+                    <input id="firstTimeInput" type="text">
+                </div>
+            </div>
+            <br>
+            <div id="frequencyInputContainer">
+                <div>
+                    <label for="frequencyInput">Frequency (min)</label>
+                </div>
+                <div>
+                    <input id="frequencyInput" type="text">
+                </div>
+                <br>
+                <button id="submitButton">Submit</button>
+            </div>
+        </div>
+        <script src="assets/javascript/train.js"></script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+#addTrainFormContainer,
+#currentTrainScheduleContainer {
+    border: 3px;
+    border-color: darkblue;
+    border-style: solid;
+    margin: auto;
+    width: 900px;
+}
+
+#addTrainContainerLabel,
+#currentTrainScheduleLabel {
+    background-color: darkblue;
+    color: white;
+}
+
+input {
+    margin-right: 10px;
+    width: 894px;
+}
+
+#pageHeader {
+    background-color: darkblue;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+#submitButton {
+    background-color: darkblue;
+    color: white;
+    height: 30px;
+    width: 100px;
+}
