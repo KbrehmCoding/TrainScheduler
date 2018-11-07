@@ -27,14 +27,6 @@ input {
     text-align: center;
 }
 
-h1 {
-    font-size: 50px;
-}
-
-h4 {
-    font-size: 20px;
-}
-
 #submitButton {
     background-color: darkblue;
     color: white;
