@@ -17,12 +17,14 @@
         var empDestination = $("#Destination-input").val().trim();
         var empFrequency = moment($("#Frequency-input").val().trim(), "MM/DD/YYYY").format("X");
         var empMinAway = $("#minAway-input").val().trim();
+        var firstTime = moment($("#firstTimeinput").val().trim());
 
         var newEmp = {
             name: empName,
             Destination: empDestination,
             Frequency: empFrequency,
-            minAway: empMinAway
+            minAway: empMinAway,
+            firstTime: empFirstTime
         };
 
         database.ref().push(newEmp);
@@ -31,6 +33,7 @@
         console.log(newEmp.Destination);
         console.log(newEmp.Frequency);
         console.log(newEmp.minAway);
+        console.log(empFirstTime.firstTime)
 
         alert("Employee successfully added");
 
@@ -38,6 +41,7 @@
         $("#Destination-input").val("");
         $("#Frequency-input").val("");
         $("#minAway-input").val("");
+        $("#firstTimeInput").val("");
     });
 
         database.ref().on("child_added", function(childSnapshot) {
@@ -47,13 +51,35 @@
         var empDestination = childSnapshot.val().Destination;
         var empFrequency = childSnapshot.val().Frequency;
         var empMinAway = childSnapshot.val().minAway;
+        var empFirstTime = chidlSanpShot.val().firstTime;
 
         console.log(empName);
         console.log(empDestination);
         console.log(empFrequency);
         console.log(empMinAway);
+        console.log(empFirstTime);
 
-//code for calculations goes here
+        var tFrequency = empFrequency;
+
+        var firstTime = empFirstTime;
+
+        var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+        console.log(firstTimeConverted);
+
+        var currentTime = moment();
+        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+        var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+        console.log("DIFFERENCE IN TIME: " + diffTime);
+
+        var tRemainder = diffTime % tFrequency;
+        console.log(tRemainder);
+
+        var tMinutesTillTrain = tFrequency - tRemainder;
+        console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+        var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+        console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
         var newRow = $("<tr>").append(
             $("<td>").text(empName),
