@@ -1,5 +1,3 @@
-<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-
     var config = {
         apiKey: "AIzaSyB2gLeq7KxSobVV8Iv5CYgHVf6EM_w-MNw",
         authDomain: "classproject-ca27e.firebaseapp.com",
