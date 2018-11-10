@@ -36,8 +36,6 @@ $("#submitButton").on("click", function(event) {
     console.log(newEmp.minAway);
     console.log(empFirstTime.firstTime)
 
-    alert("Employee successfully added");
-
     $("#trainNameInput").val("");
     $("#").val("");
     $("FrequencyInput").val("");
