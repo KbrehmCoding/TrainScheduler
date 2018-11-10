@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var config = {
     apiKey: "AIzaSyB2gLeq7KxSobVV8Iv5CYgHVf6EM_w-MNw",
     authDomain: "classproject-ca27e.firebaseapp.com",
@@ -26,6 +27,15 @@ $("#submitButton").on("click", function(event) {
         Frequency: empFrequency,
         minAway: empMinAway,
         firstTime: empFirstTime
+=======
+    var config = {
+        apiKey: "AIzaSyB2gLeq7KxSobVV8Iv5CYgHVf6EM_w-MNw",
+        authDomain: "classproject-ca27e.firebaseapp.com",
+        databaseURL: "https://classproject-ca27e.firebaseio.com",
+        projectId: "classproject-ca27e",
+        storageBucket: "classproject-ca27e.appspot.com",
+        messagingSenderId: "428460988398"
+>>>>>>> bf4726dcbedff1c68bbda5f5b895d2d44535bd2e
     };
 
     database.push(newEmp);
