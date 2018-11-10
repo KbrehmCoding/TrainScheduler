@@ -38,7 +38,7 @@ $("#submitButton").on("click", function(event) {
 
     $("#trainNameInput").val("");
     $("#").val("");
-    $("FrequencyInput").val("");
+    $("#frequencyInput").val("");
     $("#minAway").val("");
     $("#firstTimeInput").val("");
 });
