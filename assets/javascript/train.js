@@ -86,6 +86,7 @@ database.on("child_added", function(childSnapshot) {
         $("<td>").text(empName),
         $("<td>").text(empDestination),
         $("<td>").text(empFrequency),
+        $("<td<").text(nextArrival),
         $("<td>").text(empMinAway),
     );
 
