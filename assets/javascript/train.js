@@ -57,7 +57,7 @@ database.on("child_added", function(childSnapshot) {
     console.log(empName);
     console.log(empDestination);
     console.log(empFrequency);
-    // console.log(empMinAway);
+    console.log(empMinAway);
     console.log(empFirstTime);
 
     var tFrequency = empFrequency;
@@ -86,8 +86,8 @@ database.on("child_added", function(childSnapshot) {
         $("<td>").text(empName),
         $("<td>").text(empDestination),
         $("<td>").text(empFrequency),
-        $("<td<").text(nextArrival),
-        $("<td>").text(empMinAway),
+        $("<td>").text(nextTrain),
+        $("<td>").text(tMinutesTillTrain),
     );
 
     $("#train-table > tbody").append(newRow);
