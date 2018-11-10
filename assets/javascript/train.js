@@ -1,92 +1,93 @@
-<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+var config = {
+    apiKey: "AIzaSyB2gLeq7KxSobVV8Iv5CYgHVf6EM_w-MNw",
+    authDomain: "classproject-ca27e.firebaseapp.com",
+    databaseURL: "https://classproject-ca27e.firebaseio.com",
+    messagingSenderId: "428460988398",
+    projectId: "classproject-ca27e",
+    storageBucket: "classproject-ca27e.appspot.com",
+};
+firebase.initializeApp(config);
 
-    var config = {
-        apiKey: "AIzaSyB2gLeq7KxSobVV8Iv5CYgHVf6EM_w-MNw",
-        authDomain: "classproject-ca27e.firebaseapp.com",
-        databaseURL: "https://classproject-ca27e.firebaseio.com",
-        projectId: "classproject-ca27e",
-        storageBucket: "classproject-ca27e.appspot.com",
-        messagingSenderId: "428460988398"
+var database = firebase.database().ref();
+
+$("#submitButton").on("click", function(event) {
+    event.preventDefault();
+
+    var empName = $("#trainNameInput").val().trim();
+    var empDestination = $("#destinationInput").val().trim();
+    var empFrequency = moment($("#frequencyInput").val().trim(), "MM/DD/YYYY").format("X");
+    var empMinAway = $("#minAway").val();
+    var empMinAway = "$(#firstTimeInput)" + "$(#frequencyInput)";
+    var empFirstTime = moment($("#firstTimeinput"));
+
+    var newEmp = {
+        name: empName,
+        Destination: empDestination,
+        Frequency: empFrequency,
+        minAway: empMinAway,
+        firstTime: empFirstTime
     };
-    firebase.initializeApp(config);
 
-    $("#submitButton").on("click", function(event) {
-        event.preventDefault();
+    database.push(newEmp);
 
-        var empName = $("#employee-name-input").val().trim();
-        var empDestination = $("#Destination-input").val().trim();
-        var empFrequency = moment($("#Frequency-input").val().trim(), "MM/DD/YYYY").format("X");
-        var empMinAway = $("#minAway-input").val().trim();
-        var firstTime = moment($("#firstTimeinput").val().trim());
+    console.log(newEmp.name);
+    console.log(newEmp.Destination);
+    console.log(newEmp.Frequency);
+    console.log(newEmp.minAway);
+    console.log(empFirstTime.firstTime)
 
-        var newEmp = {
-            name: empName,
-            Destination: empDestination,
-            Frequency: empFrequency,
-            minAway: empMinAway,
-            firstTime: empFirstTime
-        };
+    alert("Employee successfully added");
 
-        database.ref().push(newEmp);
+    $("#trainNameInput").val("");
+    $("#").val("");
+    $("FrequencyInput").val("");
+    $("#minAway").val("");
+    $("#firstTimeInput").val("");
+});
 
-        console.log(newEmp.name);
-        console.log(newEmp.Destination);
-        console.log(newEmp.Frequency);
-        console.log(newEmp.minAway);
-        console.log(empFirstTime.firstTime)
+database.on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
 
-        alert("Employee successfully added");
+    var empName = childSnapshot.val().name;
+    var empDestination = childSnapshot.val().Destination;
+    var empFrequency = childSnapshot.val().Frequency;
+    var empMinAway = childSnapshot.val().minAway;
+    var empFirstTime = childSnapshot.val().firstTime;
 
-        $("#employee-name-input").val("");
-        $("#Destination-input").val("");
-        $("#Frequency-input").val("");
-        $("#minAway-input").val("");
-        $("#firstTimeInput").val("");
-    });
+    console.log(empName);
+    console.log(empDestination);
+    console.log(empFrequency);
+    // console.log(empMinAway);
+    console.log(empFirstTime);
 
-        database.ref().on("child_added", function(childSnapshot) {
-        console.log(childSnapshot.val());
+    var tFrequency = empFrequency;
 
-        var empName = childSnapshot.val().name;
-        var empDestination = childSnapshot.val().Destination;
-        var empFrequency = childSnapshot.val().Frequency;
-        var empMinAway = childSnapshot.val().minAway;
-        var empFirstTime = chidlSanpShot.val().firstTime;
+    var firstTime = empFirstTime;
 
-        console.log(empName);
-        console.log(empDestination);
-        console.log(empFrequency);
-        console.log(empMinAway);
-        console.log(empFirstTime);
+    var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
 
-        var tFrequency = empFrequency;
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-        var firstTime = empFirstTime;
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
 
-        var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-        console.log(firstTimeConverted);
+    var tRemainder = diffTime % tFrequency;
+    console.log(tRemainder);
 
-        var currentTime = moment();
-        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+    var tMinutesTillTrain = tFrequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-        var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-        console.log("DIFFERENCE IN TIME: " + diffTime);
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
-        var tRemainder = diffTime % tFrequency;
-        console.log(tRemainder);
+    var newRow = $("<tr>").append(
+        $("<td>").text(empName),
+        $("<td>").text(empDestination),
+        $("<td>").text(empFrequency),
+        $("<td>").text(empMinAway),
+    );
 
-        var tMinutesTillTrain = tFrequency - tRemainder;
-        console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-
-        var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-        console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-
-        var newRow = $("<tr>").append(
-            $("<td>").text(empName),
-            $("<td>").text(empDestination),
-            $("<td>").text(empFrequency),
-            $("<td>").text(empMinAway),
-        );
-
-        $("#train-table > tbody").append(newRow);
-        });
+    $("#train-table > tbody").append(newRow);
+});
